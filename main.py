@@ -5,8 +5,14 @@ import smtplib, requests, time
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 #from lxml import html
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
-exec_path = r'C:\Users\muruk\Downloads\geckodriver-v0.29.1-win64\geckodriver.exe'
+#exec_path = r'C:\Users\muruk\Downloads\geckodriver-v0.29.1-win64\geckodriver.exe'
 URL = 'https://www.cowin.gov.in/home'
 input_locator = 'mat-input-0'
 search_Button = '/html/body/app-root/div/app-home/div[2]/div/appointment-table/div/div/div/div/div/div/div/div/div/div/div[2]/form/div/div/div[2]/div/div/button'
@@ -41,7 +47,7 @@ text = " Vacacine is Available Now!"
 msg.attach(MIMEText(text, "plain"))
 
 
-driver = webdriver.Firefox(executable_path=exec_path)
+#driver = webdriver.Firefox(executable_path=exec_path)
 driver.get(URL)
 driver.maximize_window()
 while(1):
