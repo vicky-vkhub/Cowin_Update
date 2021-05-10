@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 import os
+from smtplib import SMTP
 import smtplib, requests, time
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
